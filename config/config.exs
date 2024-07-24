@@ -56,13 +56,14 @@ config :logger, backends: [:console, LokiLogger],
 config :logger, :keen_loki_logger,
   level: :debug,
   format: "$metadata level=$level $message",
-  metadata: [:erl_level, :application, :file, :module, :function],
+  metadata: [:erl_level, :application, :file, :module, :function, :reason],
   max_buffer: 300,
   loki_host: "https://logs-prod-021.grafana.net",
   loki_path: "/loki/api/v1/push",
-  basic_auth_user: "12345",
+  basic_auth_user: "user1",
   basic_auth_password: "password",
-  finch_protocols: [:http2]
+  finch_protocols: [:http1],
+  mint_conn_opts: []
   # mint_conn_opts: [transport_opts: [cacerts: :public_key.cacerts_get()]]
 
 
